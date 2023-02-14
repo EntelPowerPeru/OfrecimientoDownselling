@@ -35,8 +35,22 @@ const DOM_EVENTOS = {
             let html_origen_caracteristicas = "";
 
             origen.lista_caracteristicas.forEach(e => {
-                html_origen_caracteristicas += `<li class="item-light">${e}</li>`;
+                html_origen_caracteristicas += `<li class="item-light text-success">&#9675; ${e}</li>`;
             });
+
+            html += `
+            <div class="col-12 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-subtitle-2 text-success">Detalle</h3>
+
+                        <ul class="list-light">
+                            ${html_origen_caracteristicas}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            `;
 
             destinos.forEach(e => {
                 let html_ventajas = "", html_desventajas = "";
@@ -56,10 +70,6 @@ const DOM_EVENTOS = {
                             <h1 class="card-title">${e.opcion_id === 1 ? "1era opción" : "2da opción"}</h1>
 
                             <h2 class="card-subtitle">${e.destino_nombre}</h2>
-
-                            <ul class="list-light mb-4">
-                                ${html_origen_caracteristicas}
-                            </ul>
 
                             <div class="card border-primary mb-2">
                                 <div class="card-body">

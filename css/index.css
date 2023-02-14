@@ -1,6 +1,7 @@
 header {
     background: rgba(0, 46, 255, .5);
     min-height: 100vh;
+    padding: 1rem;
 }
 
 .background {
