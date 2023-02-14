@@ -30,36 +30,56 @@ const DOM_EVENTOS = {
                 return false;
             }
 
+            const origen = lista_origen.find(e => e.origen_id === origen_id);
             const destinos = lista_destino.filter(e => e.origen_id === origen_id);
+            let html_origen_caracteristicas = "";
+
+            origen.lista_caracteristicas.forEach(e => {
+                html_origen_caracteristicas += `<li class="item-light">${e}</li>`;
+            });
 
             destinos.forEach(e => {
                 let html_ventajas = "", html_desventajas = "";
 
                 e.lista_ventajas.forEach(f => {
-                    html_ventajas += `<li class="list-group-item fs-8 fst-italic fw-bold text-primary">${f}</li>`;
+                    html_ventajas += `<li class="item-light text-primary">&#10003; ${f}</li>`;
                 });
 
                 e.lista_desventajas.forEach(f => {
-                    html_desventajas += `<li class="list-group-item fs-8 fst-italic fw-bold text-danger">${f}</li>`;
+                    html_desventajas += `<li class="item-light text-danger">&#10005; ${f}</li>`;
                 });
 
                 html += `
                 <div class="col-12 col-md-6 mb-3 mb-md-0">
-                    <div class="card">
+                    <div class="card opcion">
                         <div class="card-body">
-                            <h1 class="card-title fs-4 mb-5">${e.destino_nombre}</h1>
+                            <h1 class="card-title">${e.opcion_id === 1 ? "1era opción" : "2da opción"}</h1>
 
-                            <h2 class="card-subtitle fs-5 mb-2">Beneficios</h2>
+                            <h2 class="card-subtitle">${e.destino_nombre}</h2>
 
-                            <ul class="list-group mb-4">
-                                ${html_ventajas}
+                            <ul class="list-light mb-4">
+                                ${html_origen_caracteristicas}
                             </ul>
 
-                            <h2 class="card-subtitle fs-5 mb-2">Perdidas</h2>
+                            <div class="card border-primary mb-2">
+                                <div class="card-body">
+                                    <h3 class="card-subtitle-2 text-primary">Beneficios</h3>
 
-                            <ul class="list-group">
-                                ${html_desventajas}
-                            </ul>
+                                    <ul class="list-light">
+                                        ${html_ventajas}
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="card border-danger">
+                                <div class="card-body">
+                                    <h3 class="card-subtitle-2 text-danger">Pierde</h3>
+
+                                    <ul class="list-light">
+                                        ${html_desventajas}
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

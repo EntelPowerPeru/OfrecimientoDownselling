@@ -1,3 +1,3 @@
 # About
 
-Downselling es una aplicación de ENTEL# OfrecimientoDownselling
+Downselling es una aplicación de ENTEL
